@@ -3,8 +3,25 @@ version: "3"
 services:
         web1:
             image: "my_img:v1"
-            ports: ["80:80"]
+            ports: ["80-85:80"]
+            volumes:
+                  - vol1:/root/devendra
+            networks:
+                   net_1:
 
         web2:
             image: "my_img:v1"
-            ports: ["81:80"]
+            ports: ["86-90:80"]
+            volumes:
+                  - vol2:/root/devendra
+            networks:
+                    net_2:
+
+volumes:
+       vol1:
+       vol2:
+networks:
+       net_1:
+            driver: "bridge"
+       net_2:
+            driver: "bridge"
